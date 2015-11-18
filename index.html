@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>SIR</title>
+        <style type="text/css">
+            body {
+                padding-bottom: 20px;
+                padding-top: 20px;
+            }
+            #stream {
+                display: block;
+                margin: auto;
+            }
+        </style>
+    </head>
+    <body>
+    <div class="container">
+        <div id="camera">
+            <img id="stream" src="">
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $.extend({
+                getQueryParameters: function(str) {
+                    // https://github.com/youbastard/jquery.getQueryParameters/blob/306b10e3d914f54df48932a56c863563c3df27a1/qp.js
+                    return (str || document.location.search).replace(/(^\?)/,'').split("&").map(function(n){return n=n.split("="),this[n[0]] = n[1],this}.bind({}))[0];
+                }
+            });
+            var imageSrc = $.getQueryParameters()['img'],
+                refreshFrequency = $.getQueryParameters()['freq'];
+            var streamEl = document.getElementById('stream');
+            streamEl.src = imageSrc;
+            function refresh(node) {
+                (function doRefresh() {
+                    var url;
+                    if (node.src.indexOf('?') > -1)
+                        url = node.src.split('?')[0];
+                    else
+                        url = node.src;
+                    var src = url + '?time=' + new Date().getTime();
+                    $.get(src);
+                    node.src = src;
+                    setTimeout(doRefresh, refreshFrequency);
+                })();
+            }
+            refresh(streamEl);
+        });
+    </script>
+    </body>
+</html>
