@@ -14,5 +14,5 @@ The image resource and refresh frequency can be set through query string paramet
 
 Example::
 
-    http://localhost:8080?img=http://test.com/img.jpg&freq=1000
+    http://localhost:8080?img=http://test.com/bobross.jpg&freq=1000
 
