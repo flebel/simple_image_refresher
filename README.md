@@ -16,3 +16,5 @@ Example::
 
     http://localhost:8080?img=http://test.com/bobross.jpg&freq=1000
 
+    http://flebel.github.io/simple_image_refresher/?img=http://test.com/bobross.jpg&freq=1000
+
