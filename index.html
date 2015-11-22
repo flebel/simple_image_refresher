@@ -25,7 +25,7 @@
             $.extend({
                 getQueryParameters: function(str) {
                     // https://github.com/youbastard/jquery.getQueryParameters/blob/306b10e3d914f54df48932a56c863563c3df27a1/qp.js
-                    return (str || document.location.search).replace(/(^\?)/,'').split("&").map(function(n){return n=n.split("="),this[n[0]] = n[1],this}.bind({}))[0];
+                    return (str||document.location.search).replace(/(^\?)/,'').split('&').map(function(n){return n=n.split('='),this[n[0]]=n[1],this}.bind({}))[0];
                 }
             });
             var imageSrc = $.getQueryParameters()['img'],
